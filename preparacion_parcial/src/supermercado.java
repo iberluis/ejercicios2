@@ -375,53 +375,38 @@ public class supermercado extends javax.swing.JFrame {
     private void txtcorreo_regisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcorreo_regisActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtcorreo_regisActionPerformed
-    private void fn_guardar(){
-        
-        if(txtcc_regis.getText().equals("")){
-            if(txtanombre_regis.getText().equals("")){
-                if(txtapellido_regis.getText().equals(""))
-                    if(txtcontacto_regis.getText().equals("")){
-                        if(txtsexo_regis.getText().equals("")){
-                            if(txtcorreo_regis.getText().equals("")){
-                                if(txtestudios_realizados_regis.getText().equals("")){ 
-                                    if(txtperfil_laboral_regis.getText().equals("")){
-                                        JOptionPane.showMessageDialog(null,"Obligatorio completar todos los campos");
-                            }
-                        }
-                    }
-                }
-            }
-                
-        }else{
-                posicion = 0;
-                sw = false;
-                
-                for(int i=0; i < candidato.size(); i++){
-            if(candidato.get(i).getIdint()==Integer.parseInt(txtcc_regis.getText())){
-                JOptionPane.showMessageDialog(null,"ya existe una perosan con ese documento");
-                
-                break;
-            }if (Integer.parseInt(txtcc_regis.getText()) == 0){
+    private void fn_guardar() {
+    if (txtcc_regis.getText().equals("") || txtanombre_regis.getText().equals("") ||
+            txtapellido_regis.getText().equals("") || txtcontacto_regis.getText().equals("") ||
+            txtsexo_regis.getText().equals("") || txtcorreo_regis.getText().equals("") ||
+            txtestudios_realizados_regis.getText().equals("") || txtperfil_laboral_regis.getText().equals("")) {
+        JOptionPane.showMessageDialog(null, "Obligatorio completar todos los campos");
+    } else {
+        int id = Integer.parseInt(txtcc_regis.getText());
+        boolean idExistente = false;
+        for (cls_aspirantes candidato : candidato) {
+            if (candidato.getIdint() == id) {
+                idExistente = true;
                 break;
             }
         }
         
-        JOptionPane.showMessageDialog(null,"Registro Exitoso");
-        
-        candidato.add(new cls_aspirantes(Integer.parseInt(txtcc_regis.getText()),
-        txtanombre_regis.getText(),
-        txtapellido_regis.getText(),
-        txtcontacto_regis.getText(),
-        txtcorreo_regis.getText(),
-        txtestudios_realizados_regis.getText(),
-        txtperfil_laboral_regis.getText(),
-        txtsexo_regis.getText()));
-        
-            }
+        if (idExistente) {
+            JOptionPane.showMessageDialog(null, "Ya existe una persona con ese documento");
+        } else {
+            JOptionPane.showMessageDialog(null, "Registro Exitoso");
+            candidato.add(new cls_aspirantes(id,
+                    txtanombre_regis.getText(),
+                    txtapellido_regis.getText(),
+                    txtcontacto_regis.getText(),
+                    txtcorreo_regis.getText(),
+                    txtestudios_realizados_regis.getText(),
+                    txtperfil_laboral_regis.getText(),
+                    txtsexo_regis.getText()));
         }
     }
-        
-    
+}
+
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
         fn_guardar();
     }//GEN-LAST:event_btn_guardarActionPerformed
