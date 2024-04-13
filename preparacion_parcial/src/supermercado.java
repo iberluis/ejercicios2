@@ -103,6 +103,7 @@ public class supermercado extends javax.swing.JFrame {
         jTabbedPane1.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setForeground(new java.awt.Color(0, 0, 0));
 
         txtcc_regis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
